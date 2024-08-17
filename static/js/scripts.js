@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!formData.name || !formData.email || !formData.message) {
                 feedbackDiv.textContent = "All fields are required.";
+                feedbackDiv.style.color = "red";
                 return;
             }
 
@@ -31,10 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    
+    // Initialize flip effects
     initializeFlipEffects();
 
-
+    // Login Form Submission
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', (event) => {
@@ -58,26 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-const colors = [
-    "#000080", "#00008B", "#0000CD", "#0000FF", "#006400", "#008000", "#008080",
-    "#FFFFF0", "#FFFFFF", "#191970", "#3D59AB", "#4169E1", "#4682B4", "#5F9EA0",
-    "#6A5ACD", "#7B68EE", "#87CEEB", "#87CEFA", "#8A2BE2", "#8B008B", "#8B0000",
-    "#8B4513", "#8FBC8F", "#9400D3", "#9932CC", "#9ACD32", "#A0522D", "#A52A2A",
-    "#ADD8E6", "#B0C4DE", "#B0E0E6", "#B22222", "#BA55D3", "#BC8F8F", "#BDB76B",
-    "#C71585", "#CD5C5C", "#CD853F", "#D2691E", "#D2B48C", "#DA70D6", "#DAA520",
-    "#DB7093", "#DC143C", "#DCDCDC", "#DDA0DD", "#EE82EE", "#F08080", "#FA8072",
-    "#FFA07A", "#FFA500", "#FFB6C1", "#FFC0CB", "#FFD700", "#FFE4B5", "#FFE4C4",
-    "#FFE4E1", "#FFEBCD", "#FFEFD5", "#FFF0F5", "#FFF5EE", "#FFF8DC", "#FFFACD",
-    "#FFFAF0", "#FFFAFA", "#FFFF00", "#FFFFE0", "#FFFFF0", "#FFFFFF", "#7FFFD4",
-    "#76EE00", "#7CFC00", "#7FFF00", "#7FFFD4", "#800000", "#800080", "#808000",
-    "#808080", "#87CEEB", "#87CEFA", "#8A2BE2", "#8B0000", "#8B008B", "#8B4513",
-    "#8FBC8F", "#9400D3", "#9932CC", "#9ACD32", "#A0522D", "#A52A2A", "#A9A9A9",
-    "#ADD8E6", "#ADFF2F", "#AFEEEE", "#B0C4DE", "#B0E0E6", "#B22222", "#BA55D3",
-    "#BC8F8F", "#BDB76B", "#C0C0C0", "#C71585"
-];
-
-
+    // Color changing and project display logic
     const btn = document.getElementById("btn");
     const colorSpan = document.querySelector(".color");
     const projectDisplay = document.getElementById('project-display');
@@ -92,14 +74,14 @@ const colors = [
             },
             {
                 title: "Project Two",
-                description: "A comedy website using HTML and CSS and Javascript",
-                technologies: "Git, Github, HTML, CSS and JavaScript",
+                description: "A comedy website using HTML, CSS, and Javascript",
+                technologies: "Git, Github, HTML, CSS, and JavaScript",
                 link: "https://Githerd.javascript.io.git"
             },
              {
                 title: "Project Three",
-                description: "A comedy website using HTML, CSS, javascript and Flask",
-                technologies: "Git, Visual Studio Code, Render, Github, HTML, CSS, javascript and Flask",
+                description: "A comedy website using HTML, CSS, Javascript, and Flask",
+                technologies: "Git, Visual Studio Code, Render, Github, HTML, CSS, Javascript, and Flask",
                 link: "https://Githerd.render.io.git"
             }
         ];
@@ -141,7 +123,7 @@ const colors = [
         }
     }
 
-
+    // Register Form Submission
     const registerForm = document.getElementById("register-form");
 
     if (registerForm) {
@@ -174,6 +156,7 @@ const colors = [
 
             if (formData.password !== formData.confirmPassword) {
                 feedbackDiv.textContent = "Passwords do not match!";
+                feedbackDiv.style.color = "red";
                 return;
             }
 
@@ -184,10 +167,12 @@ const colors = [
                 })
                 .then((response) => {
                     feedbackDiv.textContent = `Registration Successful! ${JSON.stringify(response.data)}`;
+                    feedbackDiv.style.color = "green";
                     console.log(response.data);
                 })
                 .catch((error) => {
                     feedbackDiv.textContent = `Registration Failed! ${error.response?.data?.error || error.message}`;
+                    feedbackDiv.style.color = "red";
                     console.error(error);
                 });
         });
@@ -204,16 +189,18 @@ const colors = [
                 })
                 .then((response) => {
                     feedbackDiv.textContent = `Simulated Registration Successful! ${JSON.stringify(response.data)}`;
+                    feedbackDiv.style.color = "green";
                     console.log(response.data);
                 })
                 .catch((error) => {
                     feedbackDiv.textContent = `Simulated Registration Failed! ${error.response?.data?.error || error.message}`;
+                    feedbackDiv.style.color = "red";
                     console.error(error);
                 });
         });
     }
 
-
+    // Sun and Orbits Animation
     const sun = document.getElementById('sun');
     if (sun) {
         console.log("Sun element found:", sun);
@@ -233,7 +220,7 @@ const colors = [
         orbit.style.animationDelay = `${index * 2}s`;
     });
 
-
+    // Form Submission Balloon Animation
     const form = document.querySelector('form');
     if (form) {
         form.addEventListener('submit', function(event) {
@@ -249,21 +236,19 @@ const colors = [
             balloon.style.left = `${rect.left + window.scrollX}px`;
             balloon.style.top = `${rect.top + window.scrollY}px`;
 
-            balloon.style.animation = 'float 5s linear infinite';
-
             setTimeout(() => {
                 balloon.remove();
             }, 5000);
         });
     }
 
-
+    // Back to Top Button Logic
     const backToTopBtn = document.getElementById("back-to-top");
 
     if (backToTopBtn) {
         backToTopBtn.style.position = "fixed";
         backToTopBtn.style.bottom = "20px";
-        backToTopBtn.style.left = "20px";  // Positioning to the left
+        backToTopBtn.style.left = "20px";  // Adjusting to the left
 
         backToTopBtn.addEventListener("click", () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -278,15 +263,17 @@ const colors = [
         });
     }
 
-
-    if (window.scrollY > 300) {
-        backToTopBtn.style.display = "block";
-    } else {
-        backToTopBtn.style.display = "none";
+    // Show or hide the back-to-top button on load
+    if (backToTopBtn) {
+        if (window.scrollY > 300) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
     }
 });
 
-
+// Flip Effects Initialization Function
 function initializeFlipEffects() {
     const flipContainers = document.querySelectorAll('.flip-container');
 
@@ -297,7 +284,7 @@ function initializeFlipEffects() {
     });
 }
 
-
+// Background Color Change Function
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -309,7 +296,7 @@ function getRandomColor() {
 
 function changeBackgroundColor() {
     document.body.style.backgroundColor = getRandomColor();
-    
+
     const randomInterval = Math.floor(Math.random() * 4000) + 1000;
 
     setTimeout(changeBackgroundColor, randomInterval);
