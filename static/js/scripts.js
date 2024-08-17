@@ -87,14 +87,20 @@ const colors = [
             {
                 title: "Project One",
                 description: "A comedy website using HTML and CSS",
-                technologies: "HTML and CSS",
+                technologies: "Git, Github, HTML and CSS",
                 link: "https://Githerd.github.io"
             },
             {
-                title: "Project Five",
-                description: "An e-commerce website",
-                technologies: "Django, HTML, CSS, JavaScript",
-                link: "https://Githerd.shop.io"
+                title: "Project Two",
+                description: "A comedy website using HTML and CSS and Javascript",
+                technologies: "Git, Github, HTML, CSS and JavaScript",
+                link: "https://Githerd.javascript.io"
+            },
+             {
+                title: "Project Three",
+                description: "A comedy website using HTML, CSS, javascript and Flask",
+                technologies: "Git, Visual Studio Code, Render, Github, HTML, CSS, javascript and Flask",
+                link: "https://Githerd.render.io"
             }
         ];
 
