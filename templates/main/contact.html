@@ -23,7 +23,10 @@
     </nav>
 
     <section>
-        <form action="{{ url_for('main.contact') }}" method="post">
+        <div class="container">
+         <h1>Give A Feedback</h1>
+            
+            <form action="{{ url_for('main.contact') }}" method="post">
             <fieldset>
                 <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name" required><br><br>
