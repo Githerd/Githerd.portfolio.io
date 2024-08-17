@@ -115,6 +115,13 @@ def skills():
 def projects():
     return render_template('main/projects.html')
 
+# Contact Form Handling
+class ContactForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired(), Length(min=2, max=100)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    message = TextAreaField('Message', validators=[DataRequired(), Length(min=10, max=1600)])
+    submit = SubmitField('Send Message')
+
 @main_bp.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = ContactForm()
