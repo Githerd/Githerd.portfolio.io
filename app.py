@@ -2,16 +2,54 @@ import os
 from flask import Flask, render_template, redirect, url_for, flash, request, Blueprint
 from flask_login import LoginManager, login_user, logout_user, UserMixin, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_wtf import FlaskForm
+from wtforms import StringField, TextAreaField, SubmitField
+from wtforms.validators import DataRequired, Email, Length
 from dotenv import load_dotenv
+from datetime import datetime
+from flask_mail import Mail, Message
+from flask_sqlalchemy import SQLAlchemy
+
 
 load_dotenv()
 
 app = Flask(__name__)
+
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587  
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = os.getenv('EMAIL_USER')
+app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASS')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('EMAIL_USER')
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db' 
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
 app.secret_key = os.getenv('SECRET_KEY', 'yumyumsugar_1')
+
+db = SQLAlchemy(app)
+mail = Mail(app)
+
+
+class ContactMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+
+with app.app_context():
+    db.create_all()
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
+
 
 users = {}
 
@@ -86,16 +124,38 @@ def skills():
 def projects():
     return render_template('projects.html')
 
+
 @main_bp.route('/contact', methods=['GET', 'POST'])
 def contact():
-    if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        message = request.form['message']
+    form = ContactForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        email = form.email.data
+        message = form.message.data
+
        
-        flash('Your message has been sent successfully!', 'success')
-        return redirect(url_for('main.balloon'))  
-    return render_template('contact.html')
+        contact_message = ContactMessage(name=name, email=email, message=message)
+        db.session.add(contact_message)
+        db.session.commit()
+
+        
+        msg = Message('New Contact Form Submission',
+                      sender=app.config['MAIL_DEFAULT_SENDER'],
+                      recipients=['your-email@example.com']) 
+        msg.body = f'''
+        Name: {name}
+        Email: {email}
+        Message: {message}
+        '''
+        mail.send(msg)
+
+        flash('Your message has been sent and stored successfully!', 'success')
+        return redirect(url_for('main.balloon'))
+
+    if request.method == 'POST' and not form.validate():
+        flash('Please correct the errors in the form.', 'error')
+
+    return render_template('contact.html', form=form)
 
 @main_bp.route('/balloon')
 def balloon():
@@ -111,6 +171,7 @@ def page_not_found(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html'), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)
