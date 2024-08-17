@@ -312,6 +312,25 @@ button:hover {
         width: 250px;
         height: 250px;
     }
+    .orbit-5 {
+    width: 150px;
+    height: 150px;
+    }
+
+   .orbit-6 {
+    width: 200px;
+    height: 200px;
+    }
+
+    .orbit-7 {
+    width: 250px;
+    height: 250px;
+    }
+
+    .orbit-8 {
+    width: 300px;
+    height: 300px;
+    }
 }
 
 /* Back to Top Button Styles */
