@@ -42,6 +42,27 @@ body {
     margin: 0 auto;
 }
 
+.navbar a {
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Logo Styles */
+.logo {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 /* Container Styles */
 .container {
     padding: 20px;
@@ -254,6 +275,26 @@ button:hover {
     width: 300px;
     height: 300px;
 }
+    .orbit-5 {
+    width: 150px;
+    height: 150px;
+    }
+
+   .orbit-6 {
+    width: 200px;
+    height: 200px;
+    }
+
+    .orbit-7 {
+    width: 250px;
+    height: 250px;
+    }
+
+    .orbit-8 {
+    width: 300px;
+    height: 300px;
+    }
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -267,13 +308,9 @@ button:hover {
         max-width: 300px;
     }
 
-    .navbar {
-        flex-wrap: wrap; /* Ensure navbar items wrap on smaller screens */
-    }
-
-    .navbar a {
-        flex: 1 1 100%; /* Make each navbar link take full width on mobile */
-        padding: 10px;
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     form input,
@@ -317,6 +354,25 @@ button:hover {
     .orbit-4 {
         width: 250px;
         height: 250px;
+    }
+    .orbit-5 {
+    width: 150px;
+    height: 150px;
+    }
+
+   .orbit-6 {
+    width: 200px;
+    height: 200px;
+    }
+
+    .orbit-7 {
+    width: 250px;
+    height: 250px;
+    }
+
+    .orbit-8 {
+    width: 300px;
+    height: 300px;
     }
 }
 
