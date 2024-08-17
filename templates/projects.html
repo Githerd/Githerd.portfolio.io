@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('main.about') }}" class="navbar-item">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+        </a>
+        <a href="{{ url_for('main.about') }}" class="navbar-item">About</a>
+        <a href="{{ url_for('main.projects') }}" class="navbar-item">Projects</a>
+        <a href="{{ url_for('main.skill') }}" class="navbar-item">skills</a>
+        <a href="{{ url_for('main.contact') }}" class="navbar-item">Contact Me</a>
+        <id="login-link"><a href="{{ url_for('auth.login') }}">Login</a>
+        </nav>
+
+
+        <div class="container content-wrapper">
+            <header>
+                <h1>Here are a few of my projects</h1>
+            </header>
+            <div id="project-display" class="project"></div>
+            <div class="navigation">
+                <br><br>
+                <button id="btn">My Projects</button>
+            </div>
+        </div>
+        </div>
+    
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flashes">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <div>
+        <button onclick="backToTop()" id="back-to-top">Back to Top</button>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 My Portfolio. All Rights Reserved.</p>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    
+    </body>
+    </html>

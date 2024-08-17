@@ -1,0 +1,315 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 0;
+}
+
+.navbar a {
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Logo Styles */
+.logo {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Container Styles */
+.container {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Main Content Area */
+main {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    min-height: calc(100vh - 3rem);
+}
+
+/* Heading Styles */
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+/* Flip Container Styles */
+.flip-container {
+    perspective: 1000px;
+    cursor: pointer;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-container.flip .flipper {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.front {
+    background-color: #f9f9f9;
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.back {
+    background-color: #eee;
+    transform: rotateY(180deg);
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input,
+form textarea {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 400px;
+}
+
+input[type="submit"],
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #555;
+}
+
+button {
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Balloon Animation */
+.balloon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    color: #ff0000;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-200px);
+    }
+}
+
+/* Sun and Orbit Styles */
+#sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px dashed #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: orbit 10s linear infinite;
+}
+
+@keyframes orbit {
+    from {
+        transform: rotate(0deg) translateX(75px) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translateX(75px) rotate(-360deg);
+    }
+}
+
+.orbit-1 {
+    width: 150px;
+    height: 150px;
+}
+
+.orbit-2 {
+    width: 200px;
+    height: 200px;
+}
+
+.orbit-3 {
+    width: 250px;
+    height: 250px;
+}
+
+.orbit-4 {
+    width: 300px;
+    height: 300px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .flip-container-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flip-container {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    form input,
+    form textarea,
+    button {
+        max-width: 100%;
+    }
+
+    .container {
+        margin: 10px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .balloon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .orbit-1 {
+        width: 100px;
+        height: 100px;
+    }
+
+    .orbit-2 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .orbit-3 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .orbit-4 {
+        width: 250px;
+        height: 250px;
+    }
+}
