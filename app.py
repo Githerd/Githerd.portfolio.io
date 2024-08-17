@@ -10,12 +10,11 @@ from datetime import datetime
 from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 
-
 load_dotenv()
 
 app = Flask(__name__)
 
-
+# Mail Configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587  
 app.config['MAIL_USE_TLS'] = True
@@ -30,6 +29,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.secret_key = os.getenv('SECRET_KEY', 'yumyumsugar_1')
 
+
 db = SQLAlchemy(app)
 mail = Mail(app)
 
@@ -41,15 +41,12 @@ class ContactMessage(db.Model):
     message = db.Column(db.Text, nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-
 with app.app_context():
     db.create_all()
-
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
-
 
 users = {}
 
@@ -82,7 +79,7 @@ def login():
             flash('Login successful!', 'success')
             return redirect(url_for('main.about'))
         flash('Invalid credentials, please try again.', 'error')
-    return render_template('main.login')
+    return render_template('main/login.html')
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -98,7 +95,7 @@ def register():
             users[username] = generate_password_hash(password)
             flash('Registration successful! Please login.', 'success')
             return redirect(url_for('auth.login'))
-    return render_template('main.register')
+    return render_template('main/register.html')
 
 @auth_bp.route('/logout', methods=['POST'])
 @login_required
@@ -114,16 +111,15 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def about():
-    return render_template('main.about')
+    return render_template('main/about.html')
 
 @main_bp.route('/skills')
 def skills():
-    return render_template('main.skills')
+    return render_template('main/skills.html')
 
 @main_bp.route('/projects')
 def projects():
-    return render_template('main.projects')
-
+    return render_template('main/projects.html')
 
 @main_bp.route('/contact', methods=['GET', 'POST'])
 def contact():
@@ -132,12 +128,10 @@ def contact():
         name = form.name.data
         email = form.email.data
         message = form.message.data
-
-       
+        
         contact_message = ContactMessage(name=name, email=email, message=message)
         db.session.add(contact_message)
         db.session.commit()
-
         
         msg = Message('New Contact Form Submission',
                       sender=app.config['MAIL_DEFAULT_SENDER'],
@@ -148,30 +142,29 @@ def contact():
         Message: {message}
         '''
         mail.send(msg)
-
+        
         flash('Your message has been sent and stored successfully!', 'success')
         return redirect(url_for('main.balloon'))
 
     if request.method == 'POST' and not form.validate():
         flash('Please correct the errors in the form.', 'error')
 
-    return render_template('main.contact', form=form)
+    return render_template('main/contact.html', form=form)
 
-@main_bp.route('/balloon')
+
 def balloon():
-    return render_template('main.balloon')
+    return render_template('main/balloon.html')
 
 app.register_blueprint(main_bp)
 
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('main.404'), 404
+    return render_template('main/404.html'), 404
 
-@app.errorhandler(500)
+
 def internal_server_error(e):
-    return render_template('main.500'), 500
-
+    return render_template('main/500.html'), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
