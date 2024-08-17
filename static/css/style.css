@@ -18,7 +18,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 14px 0;
-    flex-wrap: wrap; /* Allow navbar items to wrap in small screens */
+    flex-wrap: wrap; /* Allow navbar items to wrap on small screens */
 }
 
 .navbar a {
@@ -31,7 +31,6 @@ body {
 
 .navbar a:hover {
     background-color: #555;
-    color: white;
 }
 
 /* Logo Styles */
@@ -213,16 +212,6 @@ button:hover {
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
-    }
-
-    .flip-container-wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .flip-container {
-        width: 100%;
-        max-width: 300px;
     }
 
     form input,
