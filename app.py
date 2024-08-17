@@ -82,7 +82,7 @@ def login():
             flash('Login successful!', 'success')
             return redirect(url_for('main.about'))
         flash('Invalid credentials, please try again.', 'error')
-    return render_template('login.html')
+    return render_template('main.login')
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -98,7 +98,7 @@ def register():
             users[username] = generate_password_hash(password)
             flash('Registration successful! Please login.', 'success')
             return redirect(url_for('auth.login'))
-    return render_template('register.html')
+    return render_template('main.register')
 
 @auth_bp.route('/logout', methods=['POST'])
 @login_required
@@ -114,15 +114,15 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def about():
-    return render_template('about.html')
+    return render_template('main.about')
 
 @main_bp.route('/skills')
 def skills():
-    return render_template('skills.html')
+    return render_template('main.skills')
 
 @main_bp.route('/projects')
 def projects():
-    return render_template('projects.html')
+    return render_template('main.projects')
 
 
 @main_bp.route('/contact', methods=['GET', 'POST'])
@@ -155,22 +155,22 @@ def contact():
     if request.method == 'POST' and not form.validate():
         flash('Please correct the errors in the form.', 'error')
 
-    return render_template('contact.html', form=form)
+    return render_template('main.contact', form=form)
 
 @main_bp.route('/balloon')
 def balloon():
-    return render_template('balloon.html')
+    return render_template('main.balloon')
 
 app.register_blueprint(main_bp)
 
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('main.404'), 404
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    return render_template('500.html'), 500
+    return render_template('main.500'), 500
 
 
 if __name__ == '__main__':
