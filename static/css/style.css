@@ -179,23 +179,6 @@ button:hover {
     background-color: #555;
 }
 
-/* Back to Top Button */
-#back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px; /* Position the button on the right */
-    background-color: #000;
-    color: #fff;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-#back-to-top:hover {
-    background-color: #555;
-}
-
 /* Balloon Animation */
 .balloon {
     position: absolute;
