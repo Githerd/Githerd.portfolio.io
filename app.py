@@ -22,17 +22,13 @@ app.config['MAIL_USERNAME'] = os.getenv('EMAIL_USER')
 app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASS')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('EMAIL_USER')
 
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db' 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
 app.secret_key = os.getenv('SECRET_KEY', 'yumyumsugar_1')
-
 
 db = SQLAlchemy(app)
 mail = Mail(app)
-
 
 class ContactMessage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -61,7 +57,6 @@ class User(UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
-
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -105,7 +100,6 @@ def logout():
     return redirect(url_for('auth.login'))
 
 app.register_blueprint(auth_bp)
-
 
 main_bp = Blueprint('main', __name__)
 
@@ -151,18 +145,17 @@ def contact():
 
     return render_template('main/contact.html', form=form)
 
-
+@main_bp.route('/balloon')
 def balloon():
     return render_template('main/balloon.html')
 
 app.register_blueprint(main_bp)
 
-
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('main/404.html'), 404
 
-
+@app.errorhandler(500)
 def internal_server_error(e):
     return render_template('main/500.html'), 500
 
