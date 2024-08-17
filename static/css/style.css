@@ -17,7 +17,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 14px 0;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-wrap: wrap; /* Allow navbar items to wrap in small screens */
 }
 
 .navbar a {
@@ -26,7 +26,6 @@ body {
     padding: 14px 20px;
     text-decoration: none;
     font-size: 17px;
-    flex-grow: 1; /* Allow each link to grow to fill space */
 }
 
 .navbar a:hover {
@@ -202,14 +201,12 @@ button:hover {
 
 /* Sun and Orbit Styles */
 #sun {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    position: relative;
     width: 80px;
     height: 80px;
     background-color: #ffcc00;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
     z-index: 10;
 }
 
@@ -235,28 +232,32 @@ button:hover {
     }
 }
 
-.orbit-1 {
+.orbit-1, .orbit-5 {
     width: 150px;
     height: 150px;
 }
 
-.orbit-2 {
+.orbit-2, .orbit-6 {
     width: 200px;
     height: 200px;
 }
 
-.orbit-3 {
+.orbit-3, .orbit-7 {
     width: 250px;
     height: 250px;
 }
 
-.orbit-4 {
+.orbit-4, .orbit-8 {
     width: 300px;
     height: 300px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
     .flip-container-wrapper {
         flex-direction: column;
         align-items: center;
@@ -265,15 +266,6 @@ button:hover {
     .flip-container {
         width: 100%;
         max-width: 300px;
-    }
-
-    .navbar {
-        flex-wrap: wrap; /* Ensure navbar items wrap on smaller screens */
-    }
-
-    .navbar a {
-        flex: 1 1 100%; /* Make each navbar link take full width on mobile */
-        padding: 10px;
     }
 
     form input,
@@ -299,22 +291,22 @@ button:hover {
         font-size: 20px;
     }
 
-    .orbit-1 {
+    .orbit-1, .orbit-5 {
         width: 100px;
         height: 100px;
     }
 
-    .orbit-2 {
+    .orbit-2, .orbit-6 {
         width: 150px;
         height: 150px;
     }
 
-    .orbit-3 {
+    .orbit-3, .orbit-7 {
         width: 200px;
         height: 200px;
     }
 
-    .orbit-4 {
+    .orbit-4, .orbit-8 {
         width: 250px;
         height: 250px;
     }
@@ -325,13 +317,13 @@ button:hover {
     position: fixed;
     bottom: 20px;
     right: 20px; /* Position to the right */
-    padding: 5px 10px; /* Smaller padding for a more compact button */
+    padding: 5px 10px;
     background-color: #000;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px; /* Smaller font size */
+    font-size: 12px;
     z-index: 1000;
 }
 
