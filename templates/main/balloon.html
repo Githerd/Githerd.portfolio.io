@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout - Portfolio</title>
+    <title>Balloon - Portfolio</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
@@ -18,14 +18,12 @@
         <a href="{{ url_for('main.projects') }}" class="navbar-item">Projects</a>
         <a href="{{ url_for('main.skills') }}" class="navbar-item">Skills</a>
         <a href="{{ url_for('main.contact') }}" class="navbar-item">Contact Me</a>
-        <a href="{{ url_for('auth.login') }}" id="login-link" class="navbar-item">Login</a>
+        <a href="{{ url_for('auth.login') }}" class="navbar-item" id="login-link">Login</a>
         <a href="{{ url_for('auth.register') }}" class="navbar-item">Register</a>
     </nav>
 
-    <main class="container">
-        <h1>You have successfully logged out</h1>
-        <p>Thank you for visiting! You can <a href="{{ url_for('auth.login') }}">log in again</a> or explore other sections of the site.</p>
-    </main>
+    <h1>Message Sent!</h1>
+    <div class="balloon"></div>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
