@@ -218,25 +218,20 @@ button:hover {
 }
 
 /*  orbit sizes */
- .orbit-1, .orbit-5 {
-        width: 100px;
-        height: 100px;
-    }
+.orbit-1 {
+    width: 150px;
+    height: 150px;
+}
 
-    .orbit-2, .orbit-6 {
-        width: 150px;
-        height: 150px;
-    }
+.orbit-2 {
+    width: 200px;
+    height: 200px;
+}
 
-    .orbit-3, .orbit-7 {
-        width: 200px;
-        height: 200px;
-    }
-
-    .orbit-4, .orbit-8 {
-        width: 250px;
-        height: 250px;
-    }
+.orbit-3 {
+    width: 250px;
+    height: 250px;
+}
 
 @keyframes orbit {
     from {
@@ -288,13 +283,13 @@ button:hover {
         width: 220px;
         height: 220px;
     }
-}
-
+    
     .orbit-4, .orbit-8 {
         width: 250px;
         height: 250px;
     }
-    
+}
+
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -360,14 +355,18 @@ button:hover {
         width: 200px;
         height: 200px;
     }
-
-    .orbit-4, .orbit-8 {
+     .orbit-4, .orbit-8 {
         width: 250px;
         height: 250px;
     }
-    
+
     form {
         padding: 0 10px;
+    }
+
+    /* Move Sun and Orbits Lower */
+    #sun, .orbit {
+        top: 70%; /* Adjust the top value to move the sun and orbits lower */
     }
 }
 
@@ -388,5 +387,9 @@ button:hover {
 
 #back-to-top:hover {
     background-color: #555;
-    }
 }
+
+
+
+
+
