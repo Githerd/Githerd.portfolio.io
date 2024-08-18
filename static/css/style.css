@@ -7,6 +7,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Navbar Styles */
@@ -17,7 +18,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 14px 0;
-    flex-wrap: wrap; /* Allow navbar items to wrap in small screens */
+    flex-wrap: wrap; /* Allow navbar items to wrap on small screens */
 }
 
 .navbar a {
@@ -30,7 +31,6 @@ body {
 
 .navbar a:hover {
     background-color: #555;
-    color: white;
 }
 
 /* Logo Styles */
@@ -64,56 +64,65 @@ main {
 h1 {
     color: #333;
     text-align: center;
-    font-size: 2rem;
 }
 
-/* Flip Container Styles */
-.flip-container {
-    perspective: 1000px;
-    cursor: pointer;
-    width: 300px;
-    height: 200px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    overflow: hidden;
+/* Sun and Orbit Styles */
+#sun {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    z-index: 10;
+    margin: 0 auto;
 }
 
-.flipper {
+.orbit-container {
     position: relative;
     width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-container.flip .flipper {
-    transform: rotateY(180deg);
-}
-
-.front,
-.back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    top: 0;
-    left: 0;
+    height: 500px; /* Adjust this height as needed */
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
+    align-items: center;
 }
 
-.front {
-    background-color: #f9f9f9;
-    z-index: 2;
-    transform: rotateY(0deg);
+.orbit {
+    position: absolute;
+    border: 1px dashed #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: orbit 10s linear infinite;
 }
 
-.back {
-    background-color: #eee;
-    transform: rotateY(180deg);
+@keyframes orbit {
+    from {
+        transform: rotate(0deg) translateX(75px) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translateX(75px) rotate(-360deg);
+    }
+}
+
+.orbit-1, .orbit-5 {
+    width: 150px;
+    height: 150px;
+}
+
+.orbit-2, .orbit-6 {
+    width: 200px;
+    height: 200px;
+}
+
+.orbit-3, .orbit-7 {
+    width: 250px;
+    height: 250px;
+}
+
+.orbit-4, .orbit-8 {
+    width: 300px;
+    height: 300px;
 }
 
 /* Footer Styles */
@@ -123,7 +132,6 @@ footer {
     background-color: #333;
     color: white;
     width: 100%;
-    margin-top: auto;
 }
 
 /* Form Styles */
@@ -131,9 +139,6 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
 }
 
 form label {
@@ -149,7 +154,7 @@ form textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%;
-    box-sizing: border-box;
+    max-width: 400px;
 }
 
 input[type="submit"],
@@ -162,11 +167,24 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #555;
+}
+
+button {
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     margin-top: 10px;
     font-weight: bold;
 }
 
-input[type="submit"]:hover,
 button:hover {
     background-color: #555;
 }
@@ -190,82 +208,10 @@ button:hover {
     }
 }
 
-/* Sun and Orbit Styles */
-#sun {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px;
-    height: 80px;
-    background-color: #ffcc00;
-    border-radius: 50%;
-    margin: 0;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-}
-
-.orbit {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px dashed #ccc;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: orbit 10s linear infinite;
-}
-
-/*  orbit sizes */
-    .orbit-1, .orbit-5 {
-        width: 100px;
-        height: 100px;
-    }
-
-    .orbit-2, .orbit-6 {
-        width: 150px;
-        height: 150px;
-    }
-
-    .orbit-3, .orbit-7 {
-        width: 200px;
-        height: 200px;
-    }
-  .orbit-4, .orbit-8 {
-        width: 250px;
-        height: 250px;
-    }
-}
-
-@keyframes orbit {
-    from {
-        transform: rotate(0deg) translateX(75px) rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg) translateX(75px) rotate(-360deg);
-    }
-}
-
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .navbar a {
-        font-size: 16px;
-        padding: 10px 15px;
-    }
-
-    h1 {
-        font-size: 1.75rem;
-    }
-
-    .container {
-        padding: 15px;
-        margin: 15px auto;
-    }
-
-    .flip-container {
-        width: 250px;
-        height: 170px;
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
     }
 
     form input,
@@ -274,65 +220,19 @@ button:hover {
         max-width: 100%;
     }
 
-    .orbit-1, .orbit-5 {
-        width: 100px;
-        height: 100px;
-    }
-
-    .orbit-2, .orbit-6 {
-        width: 150px;
-        height: 150px;
-    }
-
-    .orbit-3, .orbit-7 {
-        width: 200px;
-        height: 200px;
-    }
-    
-  .orbit-4, .orbit-8 {
-        width: 250px;
-        height: 250px;
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-    }
-
-    .navbar a {
-        font-size: 15px;
-        padding: 10px 15px;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    .flip-container-wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .flip-container {
-        width: 220px;
-        height: 140px;
-    }
-
     .container {
         margin: 10px;
         padding: 10px;
+    }
+
+    .orbit-container {
+        height: 400px; /* Adjust the height for smaller screens */
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.25rem;
-    }
-
-    .navbar a {
-        font-size: 14px;
-        padding: 8px 10px;
+        font-size: 24px;
     }
 
     .balloon {
@@ -341,11 +241,6 @@ button:hover {
         font-size: 20px;
     }
 
-    .flip-container {
-        width: 200px;
-        height: 120px;
-    }
-
     .orbit-1, .orbit-5 {
         width: 100px;
         height: 100px;
@@ -360,26 +255,21 @@ button:hover {
         width: 200px;
         height: 200px;
     }
-    
-  .orbit-4, .orbit-8 {
+
+    .orbit-4, .orbit-8 {
         width: 250px;
         height: 250px;
     }
-    
-    form {
-        padding: 0 10px;
-    }
 
-    /* Move Sun and Orbits Lower */
-    #sun, .orbit {
-        top: 70%; /* Adjust the top value to move the sun and orbits lower */
+    .orbit-container {
+        height: 300px; /* Adjust the height for smaller screens */
     }
 }
 
 /* Back to Top Button Styles */
 #back-to-top {
     position: fixed;
-    bottom: 20px;
+    bottom: 60px; /* Adjust to place it above the footer */
     right: 20px; /* Position to the right */
     padding: 5px 10px;
     background-color: #000;
