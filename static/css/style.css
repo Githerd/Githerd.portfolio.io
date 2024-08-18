@@ -218,19 +218,24 @@ button:hover {
 }
 
 /*  orbit sizes */
-.orbit-1 {
-    width: 150px;
-    height: 150px;
-}
+    .orbit-1, .orbit-5 {
+        width: 100px;
+        height: 100px;
+    }
 
-.orbit-2 {
-    width: 200px;
-    height: 200px;
-}
+    .orbit-2, .orbit-6 {
+        width: 150px;
+        height: 150px;
+    }
 
-.orbit-3 {
-    width: 250px;
-    height: 250px;
+    .orbit-3, .orbit-7 {
+        width: 200px;
+        height: 200px;
+    }
+  .orbit-4, .orbit-8 {
+        width: 250px;
+        height: 250px;
+    }
 }
 
 @keyframes orbit {
@@ -270,18 +275,23 @@ button:hover {
     }
 
     .orbit-1, .orbit-5 {
-        width: 130px;
-        height: 130px;
+        width: 100px;
+        height: 100px;
     }
 
     .orbit-2, .orbit-6 {
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
     }
 
     .orbit-3, .orbit-7 {
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
+    }
+    
+  .orbit-4, .orbit-8 {
+        width: 250px;
+        height: 250px;
     }
 }
 
@@ -350,7 +360,12 @@ button:hover {
         width: 200px;
         height: 200px;
     }
-
+    
+  .orbit-4, .orbit-8 {
+        width: 250px;
+        height: 250px;
+    }
+    
     form {
         padding: 0 10px;
     }
