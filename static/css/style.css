@@ -201,12 +201,15 @@ button:hover {
 
 /* Sun and Orbit Styles */
 #sun {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 80px;
     height: 80px;
     background-color: #ffcc00;
     border-radius: 50%;
-    margin: 0 auto;
+    margin: 0;
+    transform: translate(-50%, -50%);
     z-index: 10;
 }
 
@@ -223,6 +226,22 @@ button:hover {
     animation: orbit 10s linear infinite;
 }
 
+/*  orbit sizes */
+.orbit-1 {
+    width: 150px;
+    height: 150px;
+}
+
+.orbit-2 {
+    width: 200px;
+    height: 200px;
+}
+
+.orbit-3 {
+    width: 250px;
+    height: 250px;
+}
+
 @keyframes orbit {
     from {
         transform: rotate(0deg) translateX(75px) rotate(0deg);
@@ -232,25 +251,6 @@ button:hover {
     }
 }
 
-.orbit-1, .orbit-5 {
-    width: 150px;
-    height: 150px;
-}
-
-.orbit-2, .orbit-6 {
-    width: 200px;
-    height: 200px;
-}
-
-.orbit-3, .orbit-7 {
-    width: 250px;
-    height: 250px;
-}
-
-.orbit-4, .orbit-8 {
-    width: 300px;
-    height: 300px;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
