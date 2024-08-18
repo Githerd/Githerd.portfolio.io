@@ -357,7 +357,7 @@ button:hover {
 
     /* Move Sun and Orbits Lower */
     #sun, .orbit {
-        top: 70%; /* Adjust the top value to move the sun and orbits lower */
+        top: 50%; /* Adjust the top value to move the sun and orbits lower */
     }
 }
 
