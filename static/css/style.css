@@ -193,22 +193,22 @@ button:hover {
 /* Sun and Orbit Styles */
 #sun {
     position: absolute;
-    top: 70%;
-    left: 70%;
+    top: 50%;
+    left: 50%;
     width: 80px;
     height: 80px;
     background-color: #ffcc00;
     border-radius: 50%;
     margin: 0;
-    transform: translate(-70%, -70%);
+    transform: translate(-50%, -50%);
     z-index: 10;
 }
 
 .orbit {
     position: absolute;
-    top: 70%;
-    left: 70%;
-    transform: translate(-70%, -70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 1px dashed #ccc;
     border-radius: 50%;
     display: flex;
@@ -218,25 +218,19 @@ button:hover {
 }
 
 /*  orbit sizes */
-    .orbit-1, .orbit-5 {
-        width: 130px;
-        height: 130px;
-    }
+.orbit-1 {
+    width: 150px;
+    height: 150px;
+}
 
-    .orbit-2, .orbit-6 {
-        width: 180px;
-        height: 180px;
-    }
+.orbit-2 {
+    width: 200px;
+    height: 200px;
+}
 
-    .orbit-3, .orbit-7 {
-        width: 220px;
-        height: 220px;
-    }
-    
-    .orbit-4, .orbit-8 {
-        width: 250px;
-        height: 250px;
-    }
+.orbit-3 {
+    width: 250px;
+    height: 250px;
 }
 
 @keyframes orbit {
@@ -288,11 +282,6 @@ button:hover {
     .orbit-3, .orbit-7 {
         width: 220px;
         height: 220px;
-    }
-    
-    .orbit-4, .orbit-8 {
-        width: 250px;
-        height: 250px;
     }
 }
 
@@ -361,10 +350,6 @@ button:hover {
         width: 200px;
         height: 200px;
     }
-     .orbit-4, .orbit-8 {
-        width: 250px;
-        height: 250px;
-    }
 
     form {
         padding: 0 10px;
@@ -394,8 +379,3 @@ button:hover {
 #back-to-top:hover {
     background-color: #555;
 }
-
-
-
-
-
