@@ -325,7 +325,7 @@ footer {
     }
 
     .orbit-container {
-        height: 400px; /* Adjust the height for smaller screens */
+        height: 300px; /* Adjust the height for smaller screens */
     }
 }
 
@@ -371,7 +371,7 @@ footer {
     }
     
     .orbit-container {
-        height: 150px; /* Adjust the height for smaller screens */
+        height: 100px; /* Adjust the height for smaller screens */
     }
 
     form {
@@ -380,7 +380,7 @@ footer {
 
     /* Move Sun and Orbits Lower */
     #sun, .orbit {
-        top: 85%; /* Adjust the top value to move the sun and orbits lower */
+        top: 95%; /* Adjust the top value to move the sun and orbits lower */
     }
 }
 
