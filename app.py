@@ -139,7 +139,7 @@ def contact():
         
         msg = Message('New Contact Form Submission',
                       sender=app.config['MAIL_DEFAULT_SENDER'],
-                      recipients=['your-email@example.com']) 
+                      recipients=['kmat.adebisi@gmail.com']) 
         msg.body = f'''
         Name: {name}
         Email: {email}
