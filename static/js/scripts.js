@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("btn");
     const colorSpan = document.querySelector(".color");
     const projectDisplay = document.getElementById('project-display');
+    const colors = ["#FF5733", "#33FF57", "#3357FF", "#F333FF", "#FF33A6"];
 
     if (btn && projectDisplay) {
         const projects = [
@@ -127,6 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerForm = document.getElementById("register-form");
 
     if (registerForm) {
+        const feedbackDiv = document.getElementById("feedback");
+
         const getButton = document.createElement("button");
         getButton.textContent = "Fetch Users (GET)";
         document.body.appendChild(getButton);
@@ -297,7 +300,7 @@ function getRandomColor() {
 function changeBackgroundColor() {
     document.body.style.backgroundColor = getRandomColor();
 
-    const randomInterval = Math.floor(Math.random() * 4000) + 1000;
+    const randomInterval = Math.floor(Math.random() * 2000) + 1000;
 
     setTimeout(changeBackgroundColor, randomInterval);
 }
