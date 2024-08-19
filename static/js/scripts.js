@@ -63,7 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("btn");
     const colorSpan = document.querySelector(".color");
     const projectDisplay = document.getElementById('project-display');
-    const colors = ["#FF5733", "#33FF57", "#3357FF", "#F333FF", "#FF33A6"];
+    const colors = [
+  "#FF5733", "#33FF57", "#3357FF", "#F333FF", "#FF33A6",
+  "#FF9900", "#FFCC00", "#669900", "#00FFCC", "#FF0066",
+  "#FF6600", "#FF3399", "#33FFCC", "#0066FF", "#99FF33",
+  "#FF3333", "#3333FF", "#33FF33", "#9933FF", "#FF3366",
+  "#33CCFF", "#FF6633", "#66FF33", "#3399FF", "#FF9933",
+  "#9933CC", "#33FF99", "#FF99CC", "#3366FF", "#FF33FF"
+];
+
 
     if (btn && projectDisplay) {
         const projects = [
@@ -71,19 +79,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 title: "Project One",
                 description: "A comedy website using HTML and CSS",
                 technologies: "Git, Github, HTML and CSS",
-                link: "https://Githerd.github.io.git"
+                link: "https://github.com/Githerd/Githerd.github.io"
             },
             {
                 title: "Project Two",
                 description: "A comedy website using HTML, CSS, and Javascript",
                 technologies: "Git, Github, HTML, CSS, and JavaScript",
-                link: "https://Githerd.javascript.io.git"
+                link: "https://github.com/Githerd/Githerd.javascript.io"
             },
              {
                 title: "Project Three",
                 description: "A comedy website using HTML, CSS, Javascript, and Flask",
                 technologies: "Git, Visual Studio Code, Render, Github, HTML, CSS, Javascript, and Flask",
-                link: "https://Githerd.render.io.git"
+                link: "https://githerd-render1-io.onrender.com"
             }
         ];
 
