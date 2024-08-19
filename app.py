@@ -143,6 +143,7 @@ def contact():
         msg.body = f'''
         Name: {name}
         Email: {email}
+        phone: {phone}
         Message: {message}
         '''
         mail.send(msg)
