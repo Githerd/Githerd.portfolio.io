@@ -41,9 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
         loginForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const formData = new FormData(loginForm);
-            const loginUrl = "{{ url_for('auth.login') }}";
 
-            fetch(loginUrl, {
+            fetch(loginForm.action, {
                 method: 'POST',
                 body: formData,
             })
@@ -64,14 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const colorSpan = document.querySelector(".color");
     const projectDisplay = document.getElementById('project-display');
     const colors = [
-  "#FF5733", "#33FF57", "#3357FF", "#F333FF", "#FF33A6",
-  "#FF9900", "#FFCC00", "#669900", "#00FFCC", "#FF0066",
-  "#FF6600", "#FF3399", "#33FFCC", "#0066FF", "#99FF33",
-  "#FF3333", "#3333FF", "#33FF33", "#9933FF", "#FF3366",
-  "#33CCFF", "#FF6633", "#66FF33", "#3399FF", "#FF9933",
-  "#9933CC", "#33FF99", "#FF99CC", "#3366FF", "#FF33FF"
-];
-
+        "#FF5733", "#33FF57", "#3357FF", "#F333FF", "#FF33A6",
+        "#FF9900", "#FFCC00", "#669900", "#00FFCC", "#FF0066",
+        "#FF6600", "#FF3399", "#33FFCC", "#0066FF", "#99FF33",
+        "#FF3333", "#3333FF", "#33FF33", "#9933FF", "#FF3366",
+        "#33CCFF", "#FF6633", "#66FF33", "#3399FF", "#FF9933",
+        "#9933CC", "#33FF99", "#FF99CC", "#3366FF", "#FF33FF"
+    ];
 
     if (btn && projectDisplay) {
         const projects = [
@@ -87,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 technologies: "Git, Github, HTML, CSS, and JavaScript",
                 link: "https://github.com/Githerd/Githerd.javascript.io"
             },
-             {
+            {
                 title: "Project Three",
                 description: "A comedy website using HTML, CSS, Javascript, and Flask",
                 technologies: "Git, Visual Studio Code, Render, Github, HTML, CSS, Javascript, and Flask",
@@ -143,14 +141,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.appendChild(getButton);
 
         getButton.addEventListener("click", () => {
-            axios
-                .get("https://reqres.in/api/users?page=2")
+            axios.get("https://reqres.in/api/users?page=2")
                 .then((response) => {
                     feedbackDiv.textContent = `Fetched Users: ${JSON.stringify(response.data)}`;
+                    feedbackDiv.style.color = "green";
                     console.log(response.data);
                 })
                 .catch((error) => {
                     feedbackDiv.textContent = `Error Fetching Users: ${error.message}`;
+                    feedbackDiv.style.color = "red";
                     console.error(error);
                 });
         });
@@ -171,21 +170,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            axios
-                .post("https://reqres.in/api/register", {
-                    email: formData.email,
-                    password: formData.password,
-                })
-                .then((response) => {
-                    feedbackDiv.textContent = `Registration Successful! ${JSON.stringify(response.data)}`;
-                    feedbackDiv.style.color = "green";
-                    console.log(response.data);
-                })
-                .catch((error) => {
-                    feedbackDiv.textContent = `Registration Failed! ${error.response?.data?.error || error.message}`;
-                    feedbackDiv.style.color = "red";
-                    console.error(error);
-                });
+            axios.post("https://reqres.in/api/register", {
+                email: formData.email,
+                password: formData.password,
+            })
+            .then((response) => {
+                feedbackDiv.textContent = `Registration Successful! ${JSON.stringify(response.data)}`;
+                feedbackDiv.style.color = "green";
+                console.log(response.data);
+            })
+            .catch((error) => {
+                feedbackDiv.textContent = `Registration Failed! ${error.response?.data?.error || error.message}`;
+                feedbackDiv.style.color = "red";
+                console.error(error);
+            });
         });
 
         const postButton = document.createElement("button");
@@ -193,21 +191,20 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.appendChild(postButton);
 
         postButton.addEventListener("click", () => {
-            axios
-                .post("https://reqres.in/api/register", {
-                    email: "eve.holt@reqres.in",
-                    password: "pistol",
-                })
-                .then((response) => {
-                    feedbackDiv.textContent = `Simulated Registration Successful! ${JSON.stringify(response.data)}`;
-                    feedbackDiv.style.color = "green";
-                    console.log(response.data);
-                })
-                .catch((error) => {
-                    feedbackDiv.textContent = `Simulated Registration Failed! ${error.response?.data?.error || error.message}`;
-                    feedbackDiv.style.color = "red";
-                    console.error(error);
-                });
+            axios.post("https://reqres.in/api/register", {
+                email: "eve.holt@reqres.in",
+                password: "pistol",
+            })
+            .then((response) => {
+                feedbackDiv.textContent = `Simulated Registration Successful! ${JSON.stringify(response.data)}`;
+                feedbackDiv.style.color = "green";
+                console.log(response.data);
+            })
+            .catch((error) => {
+                feedbackDiv.textContent = `Simulated Registration Failed! ${error.response?.data?.error || error.message}`;
+                feedbackDiv.style.color = "red";
+                console.error(error);
+            });
         });
     }
 
